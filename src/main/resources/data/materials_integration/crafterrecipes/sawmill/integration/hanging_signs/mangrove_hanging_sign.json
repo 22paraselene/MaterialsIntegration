@@ -1,0 +1,17 @@
+{
+    "type": "recipe",
+    "crafter": "sawmill_crafting",
+    "intermediate": "minecraft:air",
+    "inputs": [
+        {
+            "item": "materials_integration:mangrove_log",
+            "count": 6
+        },
+        {
+            "item": "minecraft:chain",
+            "count": 2
+        }
+    ],
+    "result": "minecraft:mangrove_hanging_sign",
+    "count": 6
+}

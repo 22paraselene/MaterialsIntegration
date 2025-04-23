@@ -1,0 +1,11 @@
+{
+  "type": "recipe",
+  "crafter": "lumberjack_custom",
+  "intermediate": "minecraft:air",
+  "inputs": [
+    {
+      "item": "materials_integration:waste"
+    }
+  ],
+  "result": "materials_integration:fuel_integration"
+}

@@ -1,0 +1,17 @@
+{
+    "type": "recipe",
+    "crafter": "sawmill_crafting",
+    "intermediate": "minecraft:air",
+    "inputs": [
+        {
+            "item": "materials_integration:cherry_log",
+            "count": 6
+        },
+        {
+            "item": "minecraft:chain",
+            "count": 2
+        }
+    ],
+    "result": "minecraft:cherry_hanging_sign",
+    "count": 6
+}

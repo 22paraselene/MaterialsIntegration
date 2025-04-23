@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "materials_integration:rock_integration"
+    },
+    "result": "minecraft:chiseled_stone_bricks",
+    "count": 1
+}

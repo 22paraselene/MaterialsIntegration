@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "materials_integration:log_integration"
+    },
+    "result": "minecraft:stripped_spruce_log",
+    "count": 1
+}

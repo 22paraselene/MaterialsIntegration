@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "materials_integration:stone_integration"
+    },
+    "result": "minecraft:deepslate_tiles",
+    "count": 1
+}

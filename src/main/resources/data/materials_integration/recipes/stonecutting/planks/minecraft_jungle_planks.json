@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "materials_integration:planks_integration"
+    },
+    "result": "minecraft:jungle_planks",
+    "count": 1
+}

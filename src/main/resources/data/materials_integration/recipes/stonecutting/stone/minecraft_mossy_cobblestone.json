@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "materials_integration:stone_integration"
+    },
+    "result": "minecraft:mossy_cobblestone",
+    "count": 1
+}

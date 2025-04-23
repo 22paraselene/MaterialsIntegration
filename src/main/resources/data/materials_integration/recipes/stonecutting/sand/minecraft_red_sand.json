@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:stonecutting",
+    "ingredient": {
+        "item": "materials_integration:sand_integration"
+    },
+    "result": "minecraft:red_sand",
+    "count": 1
+}
