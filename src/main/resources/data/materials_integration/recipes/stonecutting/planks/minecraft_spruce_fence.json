@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-        "item": "materials_integration:planks_integration"
-    },
-    "result": "minecraft:spruce_fence",
-    "count": 1
-}

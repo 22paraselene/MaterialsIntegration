@@ -34,7 +34,7 @@
                                     "condition": "minecraft:survives_explosion"
                                 }
                             ],
-                            "name": "materials_integration:rock_integration"
+                            "name": "materials_integration:stone_integration"
                         }
                     ]
                 }

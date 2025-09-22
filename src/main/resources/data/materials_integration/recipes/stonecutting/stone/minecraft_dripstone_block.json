@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-        "item": "materials_integration:stone_integration"
-    },
-    "result": "minecraft:dripstone_block",
-    "count": 1
-}

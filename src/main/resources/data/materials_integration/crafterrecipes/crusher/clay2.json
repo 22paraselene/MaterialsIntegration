@@ -7,9 +7,6 @@
     }
   ],
   "intermediate": "minecraft:air",
-  "research-id": [
-    "minecolonies:effects/knowledgeofthedepthsunlock",
-    "minecolonies:effects/crushing11unlock"
-  ],
+  "research-id": "minecolonies:effects/crushing11unlock",
   "result": "minecraft:clay"
 }

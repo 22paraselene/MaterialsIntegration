@@ -1,53 +1,13 @@
 {
-    "itemGroup.materials_integration.resource_integration": "Resource Integration",
-    "item.materials_integration.dirt_integration": "Dirt Resource",
-    "item.materials_integration.fuel_integration": "Fuel Resource",
-    "item.materials_integration.log_integration": "Log Resource",
-    "item.materials_integration.planks_integration": "Planks Resource",
-    "item.materials_integration.rock_integration": "Stone Bricks Resource",
-    "item.materials_integration.sand_integration": "Sand Resource",
-    "item.materials_integration.stone_integration": "Stone Resource",
-    "item.materials_integration.waste": "Agricultural Waste",
-    
-    "tooltip.materials_integration.hold_shift": "§7Hold Shift for more info",
-    
-    "tooltip.materials_integration.dirt.line1": "Can be placed as dirt-type blocks",
-    "tooltip.materials_integration.dirt.line2": "Used in Stonecutter for dirt-related materials",
-    "tooltip.materials_integration.dirt.line3": "No Silk Touch or special crafting required for some variants",
-    "tooltip.materials_integration.dirt.line4": "MineColonies builders and miners can process it directly",
-    
-    "tooltip.materials_integration.log.line1": "Can be placed as log-type blocks",
-    "tooltip.materials_integration.log.line2": "Acts as logs in crafting recipes",
-    "tooltip.materials_integration.log.line3": "Used in Stonecutter for log processing",
-    "tooltip.materials_integration.log.line4": "Most MineColonies artisans can craft with it",
-    
-    "tooltip.materials_integration.planks.line1": "Can be placed as plank-type blocks",
-    "tooltip.materials_integration.planks.line2": "Acts as planks in crafting recipes",
-    "tooltip.materials_integration.planks.line3": "Used in Stonecutter for wooden materials",
-    "tooltip.materials_integration.planks.line4": "MineColonies carpenters can craft nearly all wooden items with it",
-    
-    "tooltip.materials_integration.rock.line1": "Can be placed as stone brick blocks",
-    "tooltip.materials_integration.rock.line2": "Smelted quickly from stone resources",
-    "tooltip.materials_integration.rock.line3": "Used in Stonecutter for stone materials",
-    "tooltip.materials_integration.rock.line4": "MineColonies stonemasons can process it directly",
-    
-    "tooltip.materials_integration.sand.line1": "Can be placed as sand-type blocks",
-    "tooltip.materials_integration.sand.line2": "Used in Stonecutter for sand, red sand, and gravel",
-    "tooltip.materials_integration.sand.line3": "Smelts into glass faster",
-    "tooltip.materials_integration.sand.line4": "MineColonies builders can craft sandstone directly",
-    
-    "tooltip.materials_integration.stone.line1": "Can be placed as most stone-type blocks",
-    "tooltip.materials_integration.stone.line2": "Acts as cobblestone in crafting recipes",
-    "tooltip.materials_integration.stone.line3": "Used in Stonecutter for stone materials",
-    "tooltip.materials_integration.stone.line4": "MineColonies stonemasons can craft nearly all stone items with it",
-    
-    "tooltip.materials_integration.fuel.line1": "Crafted from agricultural waste, logs, or log resources",
-    "tooltip.materials_integration.fuel.line2": "Also crafted with coal or charcoal",
-    "tooltip.materials_integration.fuel.line3": "Burns as long as coal",
-    "tooltip.materials_integration.fuel.line4": "MineColonies lumberjacks can craft this",
-    
-    "tooltip.materials_integration.waste.line1": "Drops from leaves and weeds",
-    "tooltip.materials_integration.waste.line2": "Crafted with leaves, weeds, or sticks",
-    "tooltip.materials_integration.waste.line3": "Also crafted with Farmer's Delight plant fiber and bark",
-    "tooltip.materials_integration.waste.line4": "Used to make paper and fuel resources"
+    "itemGroup.citizen_pot.citizen_pot": "市民锅",
+    "item.citizen_pot.food_category_meat": "肉类",
+    "item.citizen_pot.food_category_monster": "怪物类",
+    "item.citizen_pot.food_category_fish": "鱼类",
+    "item.citizen_pot.food_category_egg": "蛋类",
+    "item.citizen_pot.food_category_fruit": "水果",
+    "item.citizen_pot.food_category_veggie": "蔬菜",
+    "item.citizen_pot.food_category_dairy": "乳类",
+    "item.citizen_pot.food_category_sweetener": "糖类",
+    "item.citizen_pot.food_category_frozen": "冰类",
+    "item.citizen_pot.food_category_inedible": "不可食用"
 }

@@ -1,313 +1,337 @@
 import json
 import os
 
+output_dir = "stonecutting"
+os.makedirs(output_dir, exist_ok=True)
+
 # --------------------------
-# 全局配置
+# 分类配置
 # --------------------------
-CONFIG = {
-    "output_root": "stonecutting",
-    "categories": {
-        "dirt": {
-            "integration": "dirt_integration",
-            "base_count": 1,
-            "slab_count": 2,
-            "entries": {
-                "minecraft": [
-                    "coarse_dirt",
-                    "dirt",
-                    "grass_block",
-                    "mud_brick_stairs",
-                    "mud_brick_wall",
-                    "mud_bricks",
-                    "mud",
-                    "mycelium",
-                    "packed_mud",
-                    "podzol",
-                    "rooted_dirt",
-                ],
-                "slabs": ["mud_brick_slab"],
-            },
-        },
-        "log": {
-            "integration": "log_integration",
-            "base_count": 1,
-            "mods": {
-                "quark": [
-                    "ancient_log",
-                    "ancient_wood",
-                    "azalea_log",
-                    "azalea_wood",
-                    "blossom_log",
-                    "blossom_wood",
-                    "stripped_ancient_log",
-                    "stripped_ancient_wood",
-                    "stripped_azalea_log",
-                    "stripped_azalea_wood",
-                    "stripped_blossom_log",
-                    "stripped_blossom_wood",
-                ],
-                "spawn": [
-                    "rotten_log",
-                    "rotten_wood",
-                    "stripped_rotten_log",
-                    "stripped_rotten_wood",
-                ],
-            },
-            "entries": {
-                "minecraft": [
-                    "acacia_log",
-                    "acacia_wood",
-                    "birch_log",
-                    "birch_wood",
-                    "cherry_log",
-                    "cherry_wood",
-                    "dark_oak_log",
-                    "dark_oak_wood",
-                    "jungle_log",
-                    "jungle_wood",
-                    "mangrove_log",
-                    "mangrove_wood",
-                    "oak_log",
-                    "oak_wood",
-                    "spruce_log",
-                    "spruce_wood",
-                    "stripped_acacia_log",
-                    "stripped_acacia_wood",
-                    "stripped_birch_log",
-                    "stripped_birch_wood",
-                    "stripped_cherry_log",
-                    "stripped_cherry_wood",
-                    "stripped_dark_oak_log",
-                    "stripped_dark_oak_wood",
-                    "stripped_jungle_log",
-                    "stripped_jungle_wood",
-                    "stripped_mangrove_log",
-                    "stripped_mangrove_wood",
-                    "stripped_oak_log",
-                    "stripped_oak_wood",
-                    "stripped_spruce_log",
-                    "stripped_spruce_wood",
-                ]
-            },
-        },
-        "planks": {
-            "integration": "planks_integration",
-            "base_count": 1,
-            "slab_count": 2,
-            "entries": {
-                "minecraft": [
-                    "acacia_fence_gate",
-                    "acacia_fence",
-                    "acacia_planks",
-                    "acacia_stairs",
-                    "birch_fence_gate",
-                    "birch_fence",
-                    "birch_planks",
-                    "birch_stairs",
-                    "cherry_fence_gate",
-                    "cherry_fence",
-                    "cherry_planks",
-                    "cherry_stairs",
-                    "dark_oak_fence_gate",
-                    "dark_oak_fence",
-                    "dark_oak_planks",
-                    "dark_oak_stairs",
-                    "jungle_fence_gate",
-                    "jungle_fence",
-                    "jungle_planks",
-                    "jungle_stairs",
-                    "mangrove_fence_gate",
-                    "mangrove_fence",
-                    "mangrove_planks",
-                    "mangrove_stairs",
-                    "oak_fence_gate",
-                    "oak_fence",
-                    "oak_planks",
-                    "oak_stairs",
-                    "spruce_fence_gate",
-                    "spruce_fence",
-                    "spruce_planks",
-                    "spruce_stairs",
-                ],
-                "slabs": [
-                    "acacia_slab",
-                    "birch_slab",
-                    "cherry_slab",
-                    "dark_oak_slab",
-                    "jungle_slab",
-                    "mangrove_slab",
-                    "oak_slab",
-                    "spruce_slab",
-                ],
-            },
-        },
-        "rock": {
-            "integration": "rock_integration",
-            "base_count": 1,
-            "slab_count": 2,
-            "entries": {
-                "minecraft": [
-                    "chiseled_stone_bricks",
-                    "cracked_stone_bricks",
-                    "deepslate",
-                    "mossy_stone_brick_stairs",
-                    "mossy_stone_brick_wall",
-                    "mossy_stone_bricks",
-                    "smooth_stone",
-                    "stone_brick_stairs",
-                    "stone_brick_wall",
-                    "stone_bricks",
-                    "stone_stairs",
-                    "stone",
-                ],
-                "slabs": [
-                    "mossy_stone_brick_slab",
-                    "smooth_stone_slab",
-                    "stone_brick_slab",
-                    "stone_slab",
-                ],
-            },
-        },
-        "sand": {
-            "integration": "sand_integration",
-            "base_count": 1,
-            "entries": {"minecraft": ["gravel", "red_sand", "sand"]},
-        },
-        "stone": {
-            "integration": "stone_integration",
-            "base_count": 1,
-            "slab_count": 2,
-            "entries": {
-                "minecraft": [
-                    "andesite_stairs",
-                    "andesite_wall",
-                    "andesite",
-                    "calcite",
-                    "chiseled_deepslate",
-                    "cobbled_deepslate_stairs",
-                    "cobbled_deepslate_wall",
-                    "cobbled_deepslate",
-                    "cobblestone_stairs",
-                    "cobblestone_wall",
-                    "cobblestone",
-                    "deepslate_brick_stairs",
-                    "deepslate_brick_wall",
-                    "deepslate_bricks",
-                    "deepslate_tile_stairs",
-                    "deepslate_tile_wall",
-                    "deepslate_tiles",
-                    "diorite_stairs",
-                    "diorite_wall",
-                    "diorite",
-                    "dripstone_block",
-                    "granite_stairs",
-                    "granite_wall",
-                    "granite",
-                    "mossy_cobblestone_stairs",
-                    "mossy_cobblestone_wall",
-                    "mossy_cobblestone",
-                    "polished_andesite_stairs",
-                    "polished_andesite",
-                    "polished_deepslate_stairs",
-                    "polished_deepslate_wall",
-                    "polished_deepslate",
-                    "polished_diorite_stairs",
-                    "polished_diorite",
-                    "polished_granite_stairs",
-                    "polished_granite",
-                    "tuff",
-                ],
-                "slabs": [
-                    "andesite_slab",
-                    "cobbled_deepslate_slab",
-                    "cobblestone_slab",
-                    "deepslate_brick_slab",
-                    "deepslate_tile_slab",
-                    "diorite_slab",
-                    "granite_slab",
-                    "mossy_cobblestone_slab",
-                    "polished_andesite_slab",
-                    "polished_deepslate_slab",
-                    "polished_diorite_slab",
-                    "polished_granite_slab",
-                ],
-            },
-        },
+category_config = {
+    "materials_integration:sand_integration": {
+        "block": ["minecraft:gravel", "minecraft:red_sand", "minecraft:sand"],
+        "slabs": [
+            "minecraft:cut_sandstone_slab",
+            "minecraft:cut_red_sandstone_slab",
+            "minecraft:red_sandstone_slab",
+            "minecraft:sandstone_slab",
+            "minecraft:smooth_red_sandstone_slab",
+            "minecraft:smooth_sandstone_slab",
+        ],
+    },
+    "materials_integration:dirt_integration": {
+        "block": [
+            "minecraft:coarse_dirt",
+            "minecraft:dirt",
+            "minecraft:grass_block",
+            "minecraft:mud_brick_stairs",
+            "minecraft:mud_brick_wall",
+            "minecraft:mud_bricks",
+            "minecraft:mud",
+            "minecraft:mycelium",
+            "minecraft:packed_mud",
+            "minecraft:podzol",
+            "minecraft:rooted_dirt",
+        ],
+        "slabs": ["minecraft:mud_brick_slab"],
+    },
+    "materials_integration:log_integration": {
+        "block": [
+            "minecraft:acacia_log",
+            "minecraft:acacia_wood",
+            "minecraft:birch_log",
+            "minecraft:birch_wood",
+            "minecraft:cherry_log",
+            "minecraft:cherry_wood",
+            "minecraft:dark_oak_log",
+            "minecraft:dark_oak_wood",
+            "minecraft:jungle_log",
+            "minecraft:jungle_wood",
+            "minecraft:mangrove_log",
+            "minecraft:mangrove_wood",
+            "minecraft:oak_log",
+            "minecraft:oak_wood",
+            "minecraft:spruce_log",
+            "minecraft:spruce_wood",
+            "minecraft:stripped_acacia_log",
+            "minecraft:stripped_acacia_wood",
+            "minecraft:stripped_birch_log",
+            "minecraft:stripped_birch_wood",
+            "minecraft:stripped_cherry_log",
+            "minecraft:stripped_cherry_wood",
+            "minecraft:stripped_dark_oak_log",
+            "minecraft:stripped_dark_oak_wood",
+            "minecraft:stripped_jungle_log",
+            "minecraft:stripped_jungle_wood",
+            "minecraft:stripped_mangrove_log",
+            "minecraft:stripped_mangrove_wood",
+            "minecraft:stripped_oak_log",
+            "minecraft:stripped_oak_wood",
+            "minecraft:stripped_spruce_log",
+            "minecraft:stripped_spruce_wood",
+            "quark:ancient_log",
+            "quark:ancient_wood",
+            "quark:azalea_log",
+            "quark:azalea_wood",
+            "quark:blossom_log",
+            "quark:blossom_wood",
+            "quark:hollow_acacia_log",
+            "quark:hollow_ancient_log",
+            "quark:hollow_azalea_log",
+            "quark:hollow_birch_log",
+            "quark:hollow_blossom_log",
+            "quark:hollow_cherry_log",
+            "quark:hollow_dark_oak_log",
+            "quark:hollow_jungle_log",
+            "quark:hollow_mangrove_log",
+            "quark:hollow_oak_log",
+            "quark:hollow_spruce_log",
+            "quark:stripped_ancient_log",
+            "quark:stripped_ancient_wood",
+            "quark:stripped_azalea_log",
+            "quark:stripped_azalea_wood",
+            "quark:stripped_blossom_log",
+            "quark:stripped_blossom_wood",
+            "quark:stripped_ancient_log",
+            "quark:stripped_ancient_wood",
+            "quark:stripped_azalea_log",
+            "quark:stripped_azalea_wood",
+            "quark:stripped_blossom_log",
+            "quark:stripped_blossom_wood",
+        ],
+    },
+    "materials_integration:planks_integration": {
+        "block": [
+            "minecraft:acacia_fence_gate",
+            "minecraft:acacia_fence",
+            "minecraft:acacia_planks",
+            "minecraft:acacia_stairs",
+            "minecraft:birch_fence_gate",
+            "minecraft:birch_fence",
+            "minecraft:birch_planks",
+            "minecraft:birch_stairs",
+            "minecraft:cherry_fence_gate",
+            "minecraft:cherry_fence",
+            "minecraft:cherry_planks",
+            "minecraft:cherry_stairs",
+            "minecraft:dark_oak_fence_gate",
+            "minecraft:dark_oak_fence",
+            "minecraft:dark_oak_planks",
+            "minecraft:dark_oak_stairs",
+            "minecraft:jungle_fence_gate",
+            "minecraft:jungle_fence",
+            "minecraft:jungle_planks",
+            "minecraft:jungle_stairs",
+            "minecraft:mangrove_fence_gate",
+            "minecraft:mangrove_fence",
+            "minecraft:mangrove_planks",
+            "minecraft:mangrove_stairs",
+            "minecraft:oak_fence_gate",
+            "minecraft:oak_fence",
+            "minecraft:oak_planks",
+            "minecraft:oak_stairs",
+            "minecraft:spruce_fence_gate",
+            "minecraft:spruce_fence",
+            "minecraft:spruce_planks",
+            "minecraft:spruce_stairs",
+            "quark:vertical_oak_planks",
+            "quark:vertical_spruce_planks",
+            "quark:vertical_birch_planks",
+            "quark:vertical_jungle_planks",
+            "quark:vertical_acacia_planks",
+            "quark:vertical_dark_oak_planks",
+            "quark:vertical_mangrove_planks",
+            "quark:vertical_cherry_planks",
+            "quark:ancient_planks",
+            "quark:vertical_ancient_planks",
+            "quark:azalea_planks",
+            "quark:vertical_azalea_planks",
+            "quark:blossom_planks",
+            "quark:vertical_blossom_planks",
+            "quark:ancient_planks_stairs",
+            "quark:azalea_planks_stairs",
+            "quark:blossom_planks_stairs",
+            "quark:ancient_fence",
+            "quark:ancient_fence_gate",
+            "quark:azalea_fence",
+            "quark:azalea_fence_gate",
+            "quark:blossom_fence",
+            "quark:blossom_fence_gate",
+        ],
+        "slabs": [
+            "minecraft:acacia_slab",
+            "minecraft:birch_slab",
+            "minecraft:cherry_slab",
+            "minecraft:dark_oak_slab",
+            "minecraft:jungle_slab",
+            "minecraft:mangrove_slab",
+            "minecraft:oak_slab",
+            "minecraft:spruce_slab",
+            "quark:acacia_vertical_slab",
+            "quark:birch_vertical_slab",
+            "quark:cherry_vertical_slab",
+            "quark:dark_oak_vertical_slab",
+            "quark:jungle_vertical_slab",
+            "quark:mangrove_vertical_slab",
+            "quark:oak_vertical_slab",
+            "quark:spruce_vertical_slab",
+            "quark:ancient_planks_vertical_slab",
+            "quark:azalea_planks_vertical_slab",
+            "quark:blossom_planks_vertical_slab",
+            "quark:ancient_planks_slab",
+            "quark:azalea_planks_slab",
+            "quark:blossom_planks_slab",
+        ],
+    },
+    "materials_integration:stone_integration": {
+        "block": [
+            "minecraft:andesite_stairs",
+            "minecraft:andesite_wall",
+            "minecraft:andesite",
+            "minecraft:calcite",
+            "minecraft:chiseled_deepslate",
+            "minecraft:cobbled_deepslate_stairs",
+            "minecraft:cobbled_deepslate_wall",
+            "minecraft:cobbled_deepslate",
+            "minecraft:cobblestone_stairs",
+            "minecraft:cobblestone_wall",
+            "minecraft:cobblestone",
+            "minecraft:deepslate_brick_stairs",
+            "minecraft:deepslate_brick_wall",
+            "minecraft:deepslate_bricks",
+            "minecraft:deepslate_tile_stairs",
+            "minecraft:deepslate_tile_wall",
+            "minecraft:deepslate_tiles",
+            "minecraft:diorite_stairs",
+            "minecraft:diorite_wall",
+            "minecraft:diorite",
+            "minecraft:dripstone_block",
+            "minecraft:granite_stairs",
+            "minecraft:granite_wall",
+            "minecraft:granite",
+            "minecraft:mossy_cobblestone_stairs",
+            "minecraft:mossy_cobblestone_wall",
+            "minecraft:mossy_cobblestone",
+            "minecraft:polished_andesite_stairs",
+            "minecraft:polished_andesite",
+            "minecraft:polished_deepslate_stairs",
+            "minecraft:polished_deepslate_wall",
+            "minecraft:polished_deepslate",
+            "minecraft:polished_diorite_stairs",
+            "minecraft:polished_diorite",
+            "minecraft:polished_granite_stairs",
+            "minecraft:polished_granite",
+            "minecraft:stone_stairs",
+            "minecraft:tuff",
+            "quark:limestone",
+            "quark:jasper",
+            "quark:permafrost",
+        ],
+        "slabs": [
+            "minecraft:andesite_slab",
+            "minecraft:cobbled_deepslate_slab",
+            "minecraft:cobblestone_slab",
+            "minecraft:deepslate_brick_slab",
+            "minecraft:deepslate_tile_slab",
+            "minecraft:diorite_slab",
+            "minecraft:granite_slab",
+            "minecraft:mossy_cobblestone_slab",
+            "minecraft:polished_andesite_slab",
+            "minecraft:polished_deepslate_slab",
+            "minecraft:polished_diorite_slab",
+            "minecraft:polished_granite_slab",
+            "minecraft:stone_slab",
+            "minecraft:stone_brick_slab",
+        ],
+    },
+    "materials_integration:rock_integration": {
+        "block": [
+            "minecraft:chiseled_stone_bricks",
+            "minecraft:cracked_stone_bricks",
+            "minecraft:mossy_stone_brick_stairs",
+            "minecraft:mossy_stone_brick_wall",
+            "minecraft:mossy_stone_bricks",
+            "minecraft:smooth_stone",
+            "minecraft:stone_brick_stairs",
+            "minecraft:stone_brick_wall",
+            "minecraft:stone_bricks",
+            "minecraft:stone",
+            "minecraft:deepslate",
+        ],
+        "slabs": [
+            "minecraft:mossy_stone_brick_slab",
+            "minecraft:smooth_stone_slab",
+            "minecraft:stone_brick_slab",
+        ],
     },
 }
 
 
 # --------------------------
-# 核心生成逻辑
+# 生成逻辑
 # --------------------------
-def generate_stonecutting_recipes():
-    """生成所有切石机配方"""
-    for category, config in CONFIG["categories"].items():
-        output_dir = os.path.join(CONFIG["output_root"], category)
-        os.makedirs(output_dir, exist_ok=True)
-
-        # 处理主配方
-        for namespace, items in config["entries"].items():
-            if namespace == "slabs":
-                continue  # 单独处理台阶
-
-            for item in items:
-                create_recipe_file(
-                    output_dir=output_dir,
-                    namespace=namespace,
-                    item=item,
-                    integration=config["integration"],
-                    count=config["base_count"],
-                )
-
-        # 处理台阶配方
-        if "slabs" in config["entries"]:
-            for slab in config["entries"]["slabs"]:
-                create_recipe_file(
-                    output_dir=output_dir,
-                    namespace="minecraft",
-                    item=slab,
-                    integration=config["integration"],
-                    count=config.get("slab_count", 2),
-                )
-
-        # 处理MOD配方
-        if "mods" in config:
-            for mod_namespace, mod_items in config["mods"].items():
-                for item in mod_items:
-                    create_recipe_file(
-                        output_dir=output_dir,
-                        namespace=mod_namespace,
-                        item=item,
-                        integration=config["integration"],
-                        count=config["base_count"],
-                    )
-
-
-def create_recipe_file(output_dir, namespace, item, integration, count):
-    """创建单个配方文件"""
+def create_block_recipes(result, ingredient):
+    """方块合成表"""
+    namespace = result.split(":")[0]
     recipe = {
         "type": "minecraft:stonecutting",
-        "ingredient": {"item": f"materials_integration:{integration}"},
-        "result": f"{namespace}:{item}",
-        "count": count,
+        "ingredient": {"item": ingredient},
+        "result": result,
+        "count": 1,
     }
-
-    # 为非原版配方添加加载条件
     if namespace != "minecraft":
-        mod_id = namespace  # 假设命名空间与模组ID一致
-        recipe["fabric:load_conditions"] = [
-            {"condition": "fabric:all_mods_loaded", "values": [mod_id]}
-        ]
-        recipe["conditions"] = [{"type": "forge:mod_loaded", "modid": mod_id}]
+        recipe.update(
+            {
+                "fabric:load_conditions": [
+                    {"condition": "fabric:all_mods_loaded", "values": [namespace]}
+                ],
+                "conditions": [{"type": "forge:mod_loaded", "modid": namespace}],
+            }
+        )
+    return recipe
 
-    filename = f"{namespace}_{item}.json"
-    filepath = os.path.join(output_dir, filename)
 
-    with open(filepath, "w") as f:
-        json.dump(recipe, f, indent=4)
+def create_slab_recipes(result, ingredient):
+    """台阶合成表"""
+    namespace = result.split(":")[0]
+    recipe = {
+        "type": "minecraft:stonecutting",
+        "ingredient": {"item": ingredient},
+        "result": result,
+        "count": 2,
+    }
+    if namespace != "minecraft":
+        recipe.update(
+            {
+                "fabric:load_conditions": [
+                    {"condition": "fabric:all_mods_loaded", "values": [namespace]}
+                ],
+                "conditions": [{"type": "forge:mod_loaded", "modid": namespace}],
+            }
+        )
+    return recipe
+
+
+def generate_recipes_tables():
+    for category, config in category_config.items():
+        # 处理方块
+        for item in config.get("block", []):
+            recipes = create_block_recipes(item, category)
+            write_file(item, recipes)
+        # 处理台阶
+        for item in config.get("slab", []):
+            recipes = create_slab_recipes(item, category)
+            write_file(item, recipes)
+
+
+def write_file(item, recipes):
+    """写入JSON文件"""
+    filename = item.split(":")[-1]
+    path = os.path.join(output_dir, f"{filename}.json")
+    with open(path, "w") as f:
+        json.dump(recipes, f, indent=4)
 
 
 if __name__ == "__main__":
-    generate_stonecutting_recipes()
-    print("切石机配方生成完成！共处理 {} 个类别".format(len(CONFIG["categories"])))
+    generate_recipes_tables()
+    print("切石机配方生成完成！")

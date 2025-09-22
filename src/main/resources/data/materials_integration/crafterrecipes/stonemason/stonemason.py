@@ -1,161 +1,190 @@
 import json
 import os
 
+output_dir = "integration"
+os.makedirs(output_dir, exist_ok=True)
+
 # --------------------------
-# 全局配置
+# 配置
 # --------------------------
-CONFIG = {
-    "output_root": "integration",
-    "categories": {
-        "sand": {
-            "integration": "sand_integration",
-            "base_count": 1,
-            "entries": {"minecraft": ["gravel", "red_sand", "sand"]},
-        },
-        "stone": {
-            "integration": "stone_integration",
-            "base_count": 1,
-            "slab_count": 2,
-            "entries": {
-                "minecraft": [
-                    "andesite_stairs",
-                    "andesite_wall",
-                    "andesite",
-                    "calcite",
-                    "chiseled_deepslate",
-                    "cobbled_deepslate_stairs",
-                    "cobbled_deepslate_wall",
-                    "cobbled_deepslate",
-                    "cobblestone_stairs",
-                    "cobblestone_wall",
-                    "cobblestone",
-                    "deepslate_brick_stairs",
-                    "deepslate_brick_wall",
-                    "deepslate_bricks",
-                    "deepslate_tile_stairs",
-                    "deepslate_tile_wall",
-                    "deepslate_tiles",
-                    "diorite_stairs",
-                    "diorite_wall",
-                    "diorite",
-                    "dripstone_block",
-                    "granite_stairs",
-                    "granite_wall",
-                    "granite",
-                    "mossy_cobblestone_stairs",
-                    "mossy_cobblestone_wall",
-                    "mossy_cobblestone",
-                    "polished_andesite_stairs",
-                    "polished_andesite",
-                    "polished_deepslate_stairs",
-                    "polished_deepslate_wall",
-                    "polished_deepslate",
-                    "polished_diorite_stairs",
-                    "polished_diorite",
-                    "polished_granite_stairs",
-                    "polished_granite",
-                    "tuff",
-                ],
-                "slabs": [
-                    "andesite_slab",
-                    "cobbled_deepslate_slab",
-                    "cobblestone_slab",
-                    "deepslate_brick_slab",
-                    "deepslate_tile_slab",
-                    "diorite_slab",
-                    "granite_slab",
-                    "mossy_cobblestone_slab",
-                    "polished_andesite_slab",
-                    "polished_deepslate_slab",
-                    "polished_diorite_slab",
-                    "polished_granite_slab",
-                ],
-            },
-        },
-        "rock": {
-            "integration": "rock_integration",
-            "base_count": 1,
-            "slab_count": 2,
-            "entries": {
-                "minecraft": [
-                    "chiseled_stone_bricks",
-                    "cracked_stone_bricks",
-                    "deepslate",
-                    "mossy_stone_brick_stairs",
-                    "mossy_stone_brick_wall",
-                    "mossy_stone_bricks",
-                    "smooth_stone",
-                    "stone_brick_stairs",
-                    "stone_brick_wall",
-                    "stone_bricks",
-                    "stone_stairs",
-                    "stone",
-                ],
-                "slabs": [
-                    "mossy_stone_brick_slab",
-                    "smooth_stone_slab",
-                    "stone_brick_slab",
-                    "stone_slab",
-                ],
-            },
-        },
+
+crafters = ["stonemason_crafting"]
+category_config = {
+    "materials_integration:sand_integration": {
+        "block": ["minecraft:gravel", "minecraft:red_sand", "minecraft:sand"],
+        "block_4": [
+            "minecraft:chiseled_red_sandstone",
+            "minecraft:chiseled_sandstone",
+            "minecraft:cut_red_sandstone",
+            "minecraft:cut_sandstone",
+            "minecraft:red_sandstone_stairs",
+            "minecraft:red_sandstone_wall",
+            "minecraft:red_sandstone",
+            "minecraft:sandstone_stairs",
+            "minecraft:sandstone_wall",
+            "minecraft:sandstone",
+            "minecraft:smooth_red_sandstone_stairs",
+            "minecraft:smooth_red_sandstone",
+            "minecraft:smooth_sandstone_stairs",
+            "minecraft:smooth_sandstone",
+        ],
+        "slabs": [
+            "minecraft:cut_sandstone_slab",
+            "minecraft:cut_red_sandstone_slab",
+            "minecraft:red_sandstone_slab",
+            "minecraft:sandstone_slab",
+            "minecraft:smooth_red_sandstone_slab",
+            "minecraft:smooth_sandstone_slab",
+        ],
+    },
+    "materials_integration:stone_integration": {
+        "block": [
+            "minecraft:andesite_stairs",
+            "minecraft:andesite_wall",
+            "minecraft:andesite",
+            "minecraft:calcite",
+            "minecraft:chiseled_deepslate",
+            "minecraft:cobbled_deepslate_stairs",
+            "minecraft:cobbled_deepslate_wall",
+            "minecraft:cobbled_deepslate",
+            "minecraft:cobblestone_stairs",
+            "minecraft:cobblestone_wall",
+            "minecraft:cobblestone",
+            "minecraft:deepslate_brick_stairs",
+            "minecraft:deepslate_brick_wall",
+            "minecraft:deepslate_bricks",
+            "minecraft:deepslate_tile_stairs",
+            "minecraft:deepslate_tile_wall",
+            "minecraft:deepslate_tiles",
+            "minecraft:deepslate",
+            "minecraft:diorite_stairs",
+            "minecraft:diorite_wall",
+            "minecraft:diorite",
+            "minecraft:dripstone_block",
+            "minecraft:granite_stairs",
+            "minecraft:granite_wall",
+            "minecraft:granite",
+            "minecraft:mossy_cobblestone_stairs",
+            "minecraft:mossy_cobblestone_wall",
+            "minecraft:mossy_cobblestone",
+            "minecraft:polished_andesite_stairs",
+            "minecraft:polished_andesite",
+            "minecraft:polished_deepslate_stairs",
+            "minecraft:polished_deepslate_wall",
+            "minecraft:polished_deepslate",
+            "minecraft:polished_diorite_stairs",
+            "minecraft:polished_diorite",
+            "minecraft:polished_granite_stairs",
+            "minecraft:polished_granite",
+            "minecraft:stone_stairs",
+            "minecraft:stone",
+            "minecraft:tuff",
+        ],
+        "slabs": [
+            "minecraft:andesite_slab",
+            "minecraft:cobbled_deepslate_slab",
+            "minecraft:cobblestone_slab",
+            "minecraft:deepslate_brick_slab",
+            "minecraft:deepslate_tile_slab",
+            "minecraft:diorite_slab",
+            "minecraft:granite_slab",
+            "minecraft:mossy_cobblestone_slab",
+            "minecraft:polished_andesite_slab",
+            "minecraft:polished_deepslate_slab",
+            "minecraft:polished_diorite_slab",
+            "minecraft:polished_granite_slab",
+            "minecraft:stone_slab",
+            "minecraft:stone_brick_slab",
+        ],
+    },
+    "materials_integration:rock_integration": {
+        "block": [
+            "minecraft:chiseled_stone_bricks",
+            "minecraft:cracked_stone_bricks",
+            "minecraft:mossy_stone_brick_stairs",
+            "minecraft:mossy_stone_brick_wall",
+            "minecraft:mossy_stone_bricks",
+            "minecraft:smooth_stone",
+            "minecraft:stone_brick_stairs",
+            "minecraft:stone_brick_wall",
+            "minecraft:stone_bricks",
+        ],
+        "slabs": [
+            "minecraft:mossy_stone_brick_slab",
+            "minecraft:smooth_stone_slab",
+            "minecraft:stone_brick_slab",
+        ],
     },
 }
 
 
 # --------------------------
-# 核心生成逻辑
+# 通用配置模板
 # --------------------------
-def generate_stonecutting_recipes():
-    """生成石匠建材配方"""
-    for category, config in CONFIG["categories"].items():
-        output_dir = os.path.join(CONFIG["output_root"], category)
-        os.makedirs(output_dir, exist_ok=True)
-
-        # 处理主配方
-        for namespace, items in config.get("entries", {}).items():
-            if namespace == "slabs":
-                continue  # 单独处理台阶
-
-            for item in items:
-                create_recipe_file(
-                    output_dir=output_dir,
-                    namespace=namespace,
-                    item=item,
-                    integration=config["integration"],
-                    count=config["base_count"],
-                )
-
-        # 处理台阶配方
-        if "slabs" in config.get("entries", {}):
-            for slab in config["entries"]["slabs"]:
-                create_recipe_file(
-                    output_dir=output_dir,
-                    namespace="minecraft",
-                    item=slab,
-                    integration=config["integration"],
-                    count=config.get("slab_count", 2),
-                )
-
-
-def create_recipe_file(output_dir, namespace, item, integration, count):
-    """创建单个配方文件"""
-    recipe = {
+def create_block_recipe(crafter, item, category):
+    """方块合成表"""
+    return {
         "type": "recipe",
-        "crafter": "stonemason_crafting",
+        "crafter": crafter,
         "intermediate": "minecraft:air",
-        "inputs": [{"item": f"materials_integration:{integration}", "count": count}],
-        "result": f"{namespace}:{item}",
-        "count": 1,
+        "inputs": [{"item": category, "count": 4}],
+        "result": item,
+        "count": 4,
     }
 
-    filename = f"{item}.json"
-    filepath = os.path.join(output_dir, filename)
 
-    with open(filepath, "w") as f:
+def create_block_4_recipe(crafter, item, category):
+    """四倍合成表"""
+    return {
+        "type": "recipe",
+        "crafter": crafter,
+        "intermediate": "minecraft:air",
+        "inputs": [{"item": category, "count": 16}],
+        "result": item,
+        "count": 4,
+    }
+
+
+def create_slabs_recipe(crafter, item, category):
+    """台阶合成表"""
+    return {
+        "type": "recipe",
+        "crafter": crafter,
+        "intermediate": "minecraft:air",
+        "inputs": [{"item": category, "count": 4}],
+        "result": item,
+        "count": 8,
+    }
+
+
+# --------------------------
+# 生成逻辑
+# --------------------------
+def generate_recipe_tables():
+    for crafter in crafters:
+        for category, config_data in category_config.items():
+            # 处理方块
+            for item in config_data.get("block", []):
+                recipe = create_block_recipe(crafter, item, category)
+                write_file(item, recipe)
+            # 处理四倍
+            for item in config_data.get("block_4", []):
+                recipe = create_block_4_recipe(crafter, item, category)
+                write_file(item, recipe)
+            # 处理台阶
+            for item in config_data.get("slabs", []):
+                recipe = create_slabs_recipe(crafter, item, category)
+                write_file(item, recipe)
+
+
+def write_file(item, recipe):
+    """写入JSON文件"""
+    filename = item.split(":")[-1]
+    path = os.path.join(output_dir, f"{filename}.json")
+    with open(path, "w") as f:
         json.dump(recipe, f, indent=4)
 
 
 if __name__ == "__main__":
-    generate_stonecutting_recipes()
-    print(f"配方生成完成！共处理 {len(CONFIG['categories'])} 个类别")
+    generate_recipe_tables()
+    print("配方表生成完成！")

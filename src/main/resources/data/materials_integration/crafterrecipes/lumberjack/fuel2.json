@@ -4,6 +4,7 @@
   "intermediate": "minecraft:air",
   "inputs": [
     {
+      "count": 9,
       "item": "materials_integration:waste"
     }
   ],

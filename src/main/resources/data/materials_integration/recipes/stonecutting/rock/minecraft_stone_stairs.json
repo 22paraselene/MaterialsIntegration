@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-        "item": "materials_integration:rock_integration"
-    },
-    "result": "minecraft:stone_stairs",
-    "count": 1
-}

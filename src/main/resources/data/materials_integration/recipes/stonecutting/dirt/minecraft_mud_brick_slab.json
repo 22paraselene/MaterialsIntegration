@@ -1,8 +1,0 @@
-{
-    "type": "minecraft:stonecutting",
-    "ingredient": {
-        "item": "materials_integration:dirt_integration"
-    },
-    "result": "minecraft:mud_brick_slab",
-    "count": 2
-}

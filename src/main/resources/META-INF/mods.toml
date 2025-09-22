@@ -66,21 +66,14 @@ side = "BOTH"
 modId = "quark"
 mandatory = false
 versionRange = "[4.0-433,)"
-ordering = "BEFORE"
-side = "BOTH"
-
-[[dependencies."${mod_id}"]]
-modId = "spawn"
-mandatory = false
-versionRange = "[1.20.1-1.0.0,)"
-ordering = "BEFORE"
+ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies."${mod_id}"]]
 modId = "farmersdelight"
 mandatory = false
 versionRange = "[1.20.1-1.0.0,)"
-ordering = "BEFORE"
+ordering = "AFTER"
 side = "BOTH"
 
 [modproperties."${mod_id}"]
