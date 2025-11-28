@@ -98,7 +98,7 @@ public class SortingWorkbenchScreen extends AbstractContainerScreen<SortingWorkb
         int scrollOffset = menu.getScrollOffset();
         int startIndex = scrollOffset * 6;
 
-        hoveredOutput = ItemStack.EMPTY; // 重置悬停物品
+        hoveredOutput = ItemStack.EMPTY;
 
         for (int i = 0; i < visibleOutputCount; i++) {
             int absoluteIndex = startIndex + i;
@@ -115,6 +115,11 @@ public class SortingWorkbenchScreen extends AbstractContainerScreen<SortingWorkb
             if (!output.isEmpty()) {
                 guiGraphics.renderItem(output, x, y);
                 guiGraphics.renderItemDecorations(this.font, output, x, y);
+
+                // 绘制选择框
+                if (absoluteIndex == menu.getSelectedOutputIndex()) {
+                    guiGraphics.blit(TEXTURE, x - 1, y - 1, 176, 36, 18, 18);
+                }
 
                 // 检查鼠标是否悬停在此物品上
                 if (isMouseOverOutputSlot(mouseX, mouseY, col, row)) {

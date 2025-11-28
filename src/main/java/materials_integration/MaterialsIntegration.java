@@ -95,6 +95,9 @@ public class MaterialsIntegration {
         IEventBus modEventBus = context.getModEventBus();
         System.out.println("MaterialsIntegration MOD initialization started");
 
+        // 注册网络通道
+        Networking.register();
+
         // 注册所有组件
         BLOCKS.register(modEventBus);
         ITEMS.register(modEventBus);
