@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "minecraft:gravel",
     "minecraft:red_sand",
     "minecraft:sand",
     {"id": "mowziesmobs:raked_sand","required": false},
